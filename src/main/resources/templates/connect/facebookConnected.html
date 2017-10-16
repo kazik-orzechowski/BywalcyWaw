@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<title th:text="#{page.main.title}">Bywalcy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+	<link rel="stylesheet" th:href="@{/css/bywalcy.css}" href="../js/bywalcy.css"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script th:attr="src=@{/js/bywalcy.js}" src="../js/bywalcy.js"></script>
+
+</head>
+
+<body>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '306746906469019',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.10'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<div id="wrap"  class="container-fluid full">
+    <div class="clear-top">
+
+		<div class="header">
+		    <div th:replace="fragments/header :: headerMain">Header </div>
+		</div>
+		
+		<div class="container title-box">
+			<h1>Bywalcy.waw.pl</h1>
+			<h2>Bywasz? Bywaj w Warszawie !</h2>
+			<br/>
+			<br/>
+			
+			
+			<p><a th:text="${message !=null} ? #{${message}} + ${username} : ''">*</a></p>
+
+		</div>
+
+		
+		<div class="container content-box">
+	
+
+	<h3>Zalogowany do Facebooka</h3>
+
+		<p>
+			Jesteś zalogowany do Facebook'a.
+			Naciśnij <a th:href="@{/connect/status}">tutaj</a> by zaobaczyć wpisy na Facebook'u.
+		</p>
+		
+		</div>
+	</div>
+</div>
+
+<footer class="footer">
+    <div th:replace="fragments/footer :: footer">Footer </div>
+</footer>
+
+</body>
+</html>
+
