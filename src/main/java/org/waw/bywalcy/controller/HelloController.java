@@ -26,16 +26,12 @@ public class HelloController {
     	
     	System.err.println(1);
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
-        	System.err.println(2);
         	return "redirect:/connect/facebook";
         }
-        System.err.println(3);
-//        model.addAttribute("facebookProfile", facebook.userOperations().getUserProfile());
         PagedList<Post> feed = facebook.feedOperations().getFeed();
 
         
         model.addAttribute("feed", feed);
-        System.err.println(3);
 
         return "hello";
     }
